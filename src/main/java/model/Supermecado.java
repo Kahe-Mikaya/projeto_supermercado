@@ -1,3 +1,4 @@
+package model;
 import java.util.*;
 
 public class Supermecado{
@@ -31,7 +32,32 @@ public class Supermecado{
     this.nome = nome;
   }
 
-  @override
+  public boolean adicionarProduto(Produto produto){
+    return produtos.add(produto);
+    
+  }
+  public boolean removeProduto(Produto produto){
+    return produtos.remove(produto);
+  }
+  public boolean containsProduto(Produto produto){
+    return produtos.contains(produto);
+  }
+
+  public boolean adicionarCliente(Client cliente){
+    return clientes.add(cliente);
+  }
+
+  public boolean removeCliente(Client cliente){
+    return clientes.remove(cliente);
+  }
+
+  public boolean containsCliente(Client cliente){
+    return clientes.contains(cliente);
+  }
+  
+  
+
+  @Override
   public String toString(){
     return "Supermecado{" +
         "cnpj='" + cnpj + '\'' +
