@@ -1,13 +1,15 @@
 package model;
 import java.util.*;
+import java.io.Serializable;
 
-public class Supermecado{
+public class Supermercado implements Serializable{
+  private long serialVersionUID = 1L; //padrão para compatibilidade de informações
   private String cnpj;
   private String nome;
   private Set<Produto> produtos;
   private Set<Client> clientes;
 
-  public Supermecado(String cnpj, String nome){
+  public Supermercado(String cnpj, String nome) {
     this.cnpj = cnpj;
     this.nome = nome;
     this.produtos = new HashSet<>();
@@ -66,5 +68,5 @@ public class Supermecado{
         ", clientes=" + clientes +
         '}';
   }
-    
+  
 }

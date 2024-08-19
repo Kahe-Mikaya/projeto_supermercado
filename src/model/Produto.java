@@ -1,8 +1,8 @@
 package model;
 import java.util.*;
+import java.io.Serializable;
 
-public class Produto{
-
+public class Produto implements Serializable{
   private int codigo;
   private String nome;
   private float preco;

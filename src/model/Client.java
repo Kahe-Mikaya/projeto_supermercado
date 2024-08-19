@@ -1,13 +1,16 @@
 package model;
+import java.io.Serializable;
 
 import java.util.*;
-public class Client{
+public class Client implements Serializable {
+  private long serialVersionUID;
   private String cpf;
   private String nome;
   private String telefone;
   private String email;
 
-  public Client(String cpf, String nome, String telefone, String email){
+  public Client(String cpf, String nome, String telefone, String email)  {
+    serialVersionUID = 1L;
     this.cpf = cpf;
     this.nome = nome;
     this.telefone = telefone;
