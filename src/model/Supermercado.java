@@ -68,5 +68,17 @@ public class Supermercado implements Serializable{
         ", clientes=" + clientes +
         '}';
   }
-  
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Supermercado that = (Supermercado) o;
+    return Objects.equals(cnpj, that.cnpj);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(cnpj);
+  }
 }

@@ -112,5 +112,5 @@ public class SupermercadoDao {
         }
         return null;  
     }
-
+    public  boolean atualizar(Supermercado supermercado){return deletar(supermercado) && salvar(supermercado);}
 }

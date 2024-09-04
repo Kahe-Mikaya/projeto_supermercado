@@ -1,21 +1,15 @@
 package view;
-import dao.*;
+import  dao.*;
 import model.*;
+import javax.swing.*;
+
+
 public class Main {
   public static void main(String[] args) {
-    SupermercadoDao supermercadoDao = new SupermercadoDao();
+    String profissoes[] = {"carpinteiro","pedreiro"};
+    JOptionPane.showMessageDialog(null, "Bem vindo ao Supermercado");
 
-    Supermercado supermercado = new Supermercado("111",
-            "Mercadinho da esquina");
-
-    if(supermercadoDao.salvar(supermercado)){
-        System.out.println("Salvo com sucesso!");
-    }else{
-        System.out.println("Falha ao salvar");
-    }
-    
-    System.out.println(supermercadoDao.buscarPorCnpj("111"));
+    JOptionPane.showOptionDialog(null,"minha mensagem","titulo",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,profissoes,profissoes[0]);
 
   }
-
 }
