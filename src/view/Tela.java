@@ -89,9 +89,11 @@ public class Tela extends JFrame {
                 String cnpj = cnpjInput.getText();
                 Supermercado supermercado = dao.buscarPorCnpj(cnpj);
                 if(supermercado != null){
+                    System.out.println(supermercado.getNome());
                     TelaCliente cadastroCliente = new TelaCliente(supermercado);
                     cadastroCliente.setVisible(true);
                 }
+
             }
         });
     }

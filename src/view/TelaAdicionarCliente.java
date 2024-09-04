@@ -22,6 +22,7 @@ public class TelaAdicionarCliente extends JDialog {
     public TelaAdicionarCliente(Supermercado supermecado) {
         setContentPane(contentPane);
         setModal(true);
+        pack();
         getRootPane().setDefaultButton(buttonOK);
         this.supermercado = supermecado;
         buttonOK.addActionListener(new ActionListener() {
@@ -33,6 +34,7 @@ public class TelaAdicionarCliente extends JDialog {
                 String email = emailInput.getText();
                 Client cliente = new Client(cpf,nome,telefone,email);
                 supermecado.adicionarCliente(cliente);
+                dao = new SupermercadoDao();
 
                 if(dao.atualizar(supermercado)){
                     JOptionPane.showMessageDialog(contentPane,"Sucesso ao salvar");

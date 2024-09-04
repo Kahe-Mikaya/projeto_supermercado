@@ -1,10 +1,13 @@
 package view;
 
+import dao.SupermercadoDao;
 import model.Client;
 import model.Supermercado;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.*;
 
 import javax.swing.*;
@@ -17,27 +20,73 @@ public class TelaCliente extends JDialog {
     private JTable table1;
     private JButton adicionarBotao;
     private Supermercado supermercado;
-    public TelaCliente(Supermercado supermecado) {
+    private SupermercadoDao dao;
+    public TelaCliente(Supermercado supermercado) {
+        this.supermercado = supermercado;
         setContentPane(contentPane);
         setModal(true);
         pack();
         getRootPane().setDefaultButton(buttonOK);
-        this.supermercado = supermecado;
+
+        addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                preecherTabela();
+                pack();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
+
+
+
         adicionarBotao.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TelaAdicionarCliente telaAdicionarCliente = new TelaAdicionarCliente(supermecado);
+                TelaAdicionarCliente telaAdicionarCliente = new TelaAdicionarCliente(supermercado);
                 telaAdicionarCliente.setVisible(true);
             }
         });
     }
 
     private void createUIComponents() {
+        System.out.println(supermercado.getClientes());
         table1 = new JTable();
         preecherTabela();
         // TODO: place custom component creation code here
     }
     private  void preecherTabela(){
+        dao = new SupermercadoDao();
+        String cnpj = supermercado.getCnpj();
+        supermercado = dao.buscarPorCnpj(cnpj);
         String titulos[] = {"Cpf","Nome","Telefone","Email"};
         Set<Client> clientes = supermercado.getClientes();
         List<Client> clientesLista = clientes.stream().toList();
